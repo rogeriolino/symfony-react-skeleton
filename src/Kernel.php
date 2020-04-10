@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Enum as Enums;
+use Acelaya\Doctrine\Type\PhpEnumType;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
@@ -14,6 +16,15 @@ class Kernel extends BaseKernel
     use MicroKernelTrait;
 
     private const CONFIG_EXTS = '.{php,xml,yaml,yml}';
+
+    public function boot()
+    {
+        parent::boot();
+
+        PhpEnumType::registerEnumTypes([
+            // TODO register here your enums
+        ]);
+    }
 
     public function registerBundles(): iterable
     {
