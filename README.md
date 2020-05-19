@@ -20,6 +20,7 @@ Symfony web application skeleton with ReactJS.
         - Circular Reference Handler
 - Typescript
     - React
+        - Helm
     - Axios
 - Boostrap 4
     - Reactrap

@@ -7,3 +7,7 @@ api_platform:
         versions: [3]
 
     allow_plain_identifiers: true
+
+    collection:
+        pagination:
+            items_per_page: 15

@@ -1,7 +1,10 @@
-import '../css/app.scss'
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import { App } from "./App"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from "./App"
 
-const element = document.getElementById('root')
-ReactDOM.render(<App />, element)
+ReactDOM.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+);

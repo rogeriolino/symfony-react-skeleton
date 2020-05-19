@@ -1,10 +1,9 @@
-import * as React from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
     NavLink,
@@ -15,7 +14,7 @@ import {
     NavbarText
 } from 'reactstrap'
 import { User as UserIcon } from 'react-feather'
-import { Context, AppState } from '../Context'
+import { AppContext } from '../context'
 
 type Props = {
     brand: string
@@ -23,7 +22,7 @@ type Props = {
 
 export const Menu: React.FC<Props> = ({ brand }) => {
     // TODO athenticated user menu
-    const appState = React.useContext<AppState>(Context)
+    const { state } = React.useContext(AppContext)
 
     const [isOpen, setIsOpen] = React.useState(false);
 

@@ -1,15 +1,18 @@
-import * as React from "react"
-import { Helmet } from 'react-helmet'
-import { Jumbotron, Button } from "reactstrap"
+import React from "react"
+import { Helmet } from 'react-helmet-async'
+import { Jumbotron } from "reactstrap"
+import { useHistory } from "react-router-dom"
 
 type Props = {}
 
 export const NotFoundPage: React.FC<Props> = () => {
+    const history = useHistory()
+
     return (
         <div>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Not Found | Symfony+React</title>
+                <title>Not Found | Vitrine</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <Jumbotron>
@@ -17,7 +20,7 @@ export const NotFoundPage: React.FC<Props> = () => {
                 <p className="lead">Page not found.</p>
                 <hr className="my-2" />
                 <p className="lead">
-                    <a href="javascript:history.back()" className="btn btn-primary">Go back</a>
+                    <a href="#" className="btn btn-primary" onClick={() => history.goBack()}>Go back</a>
                 </p>
             </Jumbotron>
         </div>
