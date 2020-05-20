@@ -2,6 +2,9 @@
 
 Symfony web application skeleton with ReactJS.
 
+- [Clean](https://github.com/rogeriolino/symfony-react-skeleton/tree/master)
+- [Boostrap 4](https://github.com/rogeriolino/symfony-react-skeleton/tree/bootstrap4)
+- [Material UI](https://github.com/rogeriolino/symfony-react-skeleton/tree/material-ui)
 
 ## Features
 
@@ -20,11 +23,10 @@ Symfony web application skeleton with ReactJS.
         - Circular Reference Handler
 - Typescript
     - React
-        - Helm
+    - React Router DOM
+    - Helm
     - Axios
-- Boostrap 4
-    - Reactrap
-- Feather Icons
+    - Sass
 
 
 # Development

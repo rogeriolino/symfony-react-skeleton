@@ -6,7 +6,6 @@ import { AppProvider, AppContext } from './context'
 import { Menu } from './components/Menu'
 import { 
     HomePage,
-    IconsPage,
     NotFoundPage,
 } from './pages'
 
@@ -22,9 +21,6 @@ const App: React.FC<Props> = () => {
                     <Switch>
                         <Route path="/" exact={true}>
                             <HomePage/>
-                        </Route>
-                        <Route path="/icons" exact={true}>
-                            <IconsPage/>
                         </Route>
                         <Route path="*">
                             <NotFoundPage/>
