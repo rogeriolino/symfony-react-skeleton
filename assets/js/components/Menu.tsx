@@ -1,89 +1,106 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
-} from 'reactstrap'
-import { User as UserIcon } from 'react-feather'
+import { useHistory } from 'react-router-dom'
 import { AppContext } from '../context'
+import {
+    AppBar,
+    Toolbar,
+    Typography,
+    Button,
+    IconButton,
+    makeStyles,
+    Drawer,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    Divider,
+} from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu'
+import HomeIcon from '@material-ui/icons/Home'
+import InboxIcon from '@material-ui/icons/Inbox'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
 type Props = {
     brand: string
 }
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    drawer: {
+        width: 250,
+    },
+    drawerHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: theme.spacing(0, 1),
+        // necessary for content to be below app bar
+        ...theme.mixins.toolbar,
+        justifyContent: 'flex-end',
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        flexGrow: 1,
+    },
+}));
+    
+
 export const Menu: React.FC<Props> = ({ brand }) => {
     // TODO athenticated user menu
     const { state } = React.useContext(AppContext)
+    const [open, setOpen] = React.useState(false);
+    const history = useHistory()
+    const classes = useStyles()
 
-    const [isOpen, setIsOpen] = React.useState(false);
-
-    const toggle = () => setIsOpen(!isOpen);
-
-    return (
-        <Navbar color="light" light expand="md">
-            <Link to="/" className="navbar-brand">{brand}</Link>
-            <NavbarToggler onClick={toggle} />
-            <Collapse isOpen={isOpen} navbar>
-                <Nav className="mr-auto" navbar>
-                    <NavItem>
-                        <Link to="/icons" className="nav-link">Icons</Link>
-                    </NavItem>
-                    <NavItem>
-                        <Link to="/" className="nav-link">Router Link</Link>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="/">Reactrap NavLink</NavLink>
-                    </NavItem>
-                    <UncontrolledDropdown nav inNavbar>
-                        <DropdownToggle nav caret>
-                            Dropdown
-                        </DropdownToggle>
-                        <DropdownMenu right>
-                            <DropdownItem>
-                                Option 1
-                            </DropdownItem>
-                            <DropdownItem>
-                                Option 2
-                            </DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>
-                                Option 3
-                            </DropdownItem>
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
-                </Nav>
-                <NavbarText>
-                    Simple text
-                </NavbarText>
-                <Nav navbar>
-                    <UncontrolledDropdown nav inNavbar>
-                        <DropdownToggle nav caret>
-                            <UserIcon size={16} />
-                        </DropdownToggle>
-                        <DropdownMenu right>
-                            <DropdownItem>
-                                Profile
-                            </DropdownItem>
-                            <DropdownItem>
-                                Settings
-                            </DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>
-                                Log out
-                            </DropdownItem>
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
-                </Nav>
-            </Collapse>
-        </Navbar>
-    )
+    return (<div>
+        <AppBar position="static">
+            <Toolbar>
+                <IconButton
+                    edge="start"
+                    className={classes.menuButton}
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={() => setOpen(true)}>
+                    <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" className={classes.title}>
+                    {brand}
+                </Typography>
+                <Button color="inherit">
+                    Login
+                </Button>
+            </Toolbar>
+        </AppBar>
+        <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
+            <div
+                role="presentation"
+                className={classes.drawer}
+                onClick={() => setOpen(false)}
+                onKeyDown={() => setOpen(false)}>
+                <div className={classes.drawerHeader}>
+                    <IconButton onClick={() => setOpen(false)}>
+                        <ChevronLeftIcon />
+                    </IconButton>
+                </div>
+                <Divider />
+                <List>
+                    <ListItem button onClick={() => history.push('/')}>
+                        <ListItemIcon>
+                            <HomeIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Home" />
+                    </ListItem>
+                    <ListItem button onClick={() => history.push('/icons')}>
+                        <ListItemIcon>
+                            <InboxIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Icons" />
+                    </ListItem>
+                </List>
+            </div>
+        </Drawer>
+    </div>)
 }

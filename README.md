@@ -22,8 +22,7 @@ Symfony web application skeleton with ReactJS.
     - React
         - Helm
     - Axios
-- Boostrap 4
-    - Reactrap
+- Material UI
 - Feather Icons
 
 
