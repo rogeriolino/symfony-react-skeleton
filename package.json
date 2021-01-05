@@ -4,7 +4,7 @@
         "@symfony/webpack-encore": "^0.28.2",
         "@types/react": "^16.9.34",
         "@types/react-router-dom": "^5.1.4",
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "bootstrap": "^4.4.1",
         "core-js": "^3.0.0",
         "fork-ts-checker-webpack-plugin": "^0.4.1",
